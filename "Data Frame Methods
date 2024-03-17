@@ -1,0 +1,40 @@
+import pandas as pd
+import numpy as np
+
+data = {
+    "Column1": [1,2,3,4,5],
+    "Column2": [10,20,13,45,25],
+    "Column3": ["abc","bcaa","ad","cba","dea"]
+}
+df = pd.DataFrame(data)
+result = df
+
+# Prints the unique values in the 2nd column
+result = df["Column2"].unique()
+
+# Gets the number of unique values in the 2nd column
+result = df["Column2"].nunique()
+
+# Counts how many times each element occurs
+result = df["Column2"].value_counts()
+
+def square_func1(x):
+    return x * x
+
+square_func2 = lambda x : x * x
+
+# Apply the desired function using the apply method
+result = df["Column1"].apply(square_func1)
+result = df["Column1"].apply(square_func2)
+
+result = df["Column3"].apply(len)
+df["Column4"] = df["Column3"].apply(len)
+
+# Sorts in ascending order !!!!!! The positions of the rows will also change
+result = df.sort_values("Column2")
+
+# Sorts in descending order !!!!!! The positions of the rows will also change
+result = df.sort_values("Column2", ascending=False)
+
+print(result)
+print(df)
